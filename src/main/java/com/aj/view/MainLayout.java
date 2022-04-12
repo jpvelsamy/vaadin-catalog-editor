@@ -42,7 +42,9 @@ public class MainLayout extends AppLayout {
 
 	private void createDrawer() {
 		
-		RouterLink catCarLink = new RouterLink("CatlogCarousel",ThirdPartyCarouselCatalogueView.class);
+		RouterLink capcatcarLink = new RouterLink("CaptiveCarousel", CaptiveCatalogCarousel.class);
+		
+		RouterLink catCarLink = new RouterLink("CatalogCarousel",ThirdPartyCarouselCatalogueView.class);
 		
 		RouterLink catalogLink = new RouterLink("Catalogue",SingleCatalogueItemView.class);
 		
@@ -53,6 +55,6 @@ public class MainLayout extends AppLayout {
 		carouselLink.setHighlightCondition(HighlightConditions.sameLocation());
 
 		RouterLink dashboardLink = new RouterLink("Dashboard", DashboardView.class);
-		addToDrawer(new VerticalLayout(catCarLink,catalogLink, listLink, carouselLink, dashboardLink));
+		addToDrawer(new VerticalLayout(capcatcarLink, catalogLink, listLink, carouselLink, dashboardLink));
 	}
 }

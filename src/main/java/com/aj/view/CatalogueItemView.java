@@ -24,9 +24,11 @@ public class CatalogueItemView extends FormLayout {
 	private SuperTextField ctaDemo = new SuperTextField("ctaDemo");
 	private SuperTextArea ctaEnroll = new SuperTextArea("ctaEnroll");
 	private SuperTextField ctaQuote = new SuperTextField("ctaQuote");
+	private Integer position;
 
-	public CatalogueItemView(CatalogueItem catalogueItem, int position) {
+	public CatalogueItemView(CatalogueItem catalogueItem, Integer position) {
 
+		this.position = position;
 		addClassName("CI-View");
 		setWidthFull();
 		getStyle().set("margin-top", "40px");
@@ -84,5 +86,10 @@ public class CatalogueItemView extends FormLayout {
 
 	public Button getDeleteCard() {
 		return deleteCard;
+	}
+	
+	public Integer getPosition()
+	{
+		return this.position;
 	}
 }
