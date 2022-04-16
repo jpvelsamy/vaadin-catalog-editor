@@ -26,7 +26,7 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Cute catalog")
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
-public class CuteCatalogCarousel extends Div{
+public class SingleItemCatalogCarousel extends Div{
 
 	private static final long serialVersionUID = 5381096124970188761L;
 	private final HorizontalLayout carouselContainer = new HorizontalLayout();
@@ -40,7 +40,7 @@ public class CuteCatalogCarousel extends Div{
 	
 	
 	
-	public CuteCatalogCarousel( )
+	public SingleItemCatalogCarousel( )
 	{
 		add(addCard);
 		addCard.setIcon(new Icon(VaadinIcon.PLUS));

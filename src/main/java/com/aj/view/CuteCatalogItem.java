@@ -34,9 +34,12 @@ public class CuteCatalogItem extends FlexLayout
 	private SuperTextArea ctaEnroll = new SuperTextArea("ctaEnroll");
 	private SuperTextField ctaQuote = new SuperTextField("ctaQuote");
 	private Integer position;
+
+	private H3 catalogHeader;
 	
 	public CuteCatalogItem(CatalogueItem item, Integer index)
 	{
+		this.position = index;
 		setFlexDirection(FlexDirection.COLUMN);
 		setFlexWrap(FlexWrap.WRAP);
 		setAlignContent(ContentAlignment.START);
@@ -45,7 +48,7 @@ public class CuteCatalogItem extends FlexLayout
 		StyleUtil.setMarginLeft(this, LumoConstants.LUMO_SPACE_L);
 		StyleUtil.setMarginRight(this, LumoConstants.LUMO_SPACE_S);
 		
-		H3 catalogHeader = new H3("Section "+index);
+		catalogHeader = new H3("Section "+index);
 		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
 		add(catalogHeader);
 		setAlignSelf(Alignment.CENTER, catalogHeader);
@@ -67,7 +70,7 @@ public class CuteCatalogItem extends FlexLayout
 		
 		if (Objects.nonNull(catalogueItem)) {
 
-			title.setValue(this.catalogueItem.getTitle());
+			//title.setValue(this.catalogueItem.getTitle());
 			pricingValue.setValue(this.catalogueItem.getPricingValue());
 			alternateValue.setValue(this.catalogueItem.getAlternatePricingValue());
 			ctaDemo.setValue(this.catalogueItem.getCtaDemo());
@@ -76,7 +79,7 @@ public class CuteCatalogItem extends FlexLayout
 
 		} else 
 		{
-			title.setValue(Integer.toString(index));
+			title.setValue(Integer.toString(position));
 		}
 		MultiFileMemoryBuffer bufferImage = new MultiFileMemoryBuffer();
 		Upload uploadImages = new Upload(bufferImage);
@@ -114,6 +117,19 @@ public class CuteCatalogItem extends FlexLayout
 		flexLayout.setFlexWrap(wrap ? FlexWrap.WRAP : FlexWrap.NOWRAP);
 		flexLayout.setAlignContent(ContentAlignment.START);
 		return flexLayout;
+	}
+
+	public Integer getIndex() {
+		return this.position;
+		
+	}
+
+	public void setIndex(int newPosition) {
+		this.position = newPosition;
+		this.catalogHeader.removeAll();
+		this.catalogHeader.add("Section "+this.position);
+		title.setValue(Integer.toString(position));
+		
 	}
 
 }
