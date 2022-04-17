@@ -1,4 +1,4 @@
-package com.aj.view;
+package com.aj.form;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -7,6 +7,9 @@ import java.util.Map;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+
+import reusuables.LapDesignTemplate;
+import reusuables.LeadAcquisitionPage;
 
 public class CatalogCarouselContainer extends HorizontalLayout {
 
@@ -61,9 +64,7 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 	public void addNewCard(CatalogueItem newItem) {
 		final int size = this.itemMap.size();
 		final int newPosition = size + 1;
-
-		CatalogItemView newItemView = this.carouselItemBuilder.build(newItem);
-		newItemView.setIndex(newPosition);
+		CatalogItemView newItemView = this.carouselItemBuilder.buildNewCard(newPosition);
 		this.itemMap.put(newPosition, newItemView);
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(newPosition);
 		updateView(indexTuple);

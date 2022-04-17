@@ -1,11 +1,14 @@
 package com.aj;
 
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import com.aj.security.SecurityConfig;
+import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.server.PWA;
+
+import reusuables.LeadDataService;
 
 /**
  * The entry point of the Spring Boot application.
@@ -14,12 +17,19 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * and some desktop browsers.
  *
  */
-@SpringBootApplication
+
 @PWA(name = "Project Base for Vaadin with Spring", shortName = "Project Base")
+@SpringBootApplication(scanBasePackageClasses = { LeadDataService.class, SecurityConfig.class, GreetService.class})
+
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3023573200826555096L;
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 
 }

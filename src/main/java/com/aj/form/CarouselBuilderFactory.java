@@ -1,4 +1,6 @@
-package com.aj.view;
+package com.aj.form;
+
+import reusuables.LapDesignTemplate;
 
 public class CarouselBuilderFactory {
 

@@ -1,5 +1,6 @@
-package com.aj.view;
+package reusuables;
 
+import com.aj.view.CatalogueItemDesign;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 

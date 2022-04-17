@@ -1,9 +1,11 @@
-package com.aj.view;
+package com.aj.form;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import reusuables.AskJunoImage;
 
 public class CatalogueItem {
 

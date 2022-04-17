@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.vaadin.miki.superfields.text.SuperTextArea;
 import org.vaadin.miki.superfields.text.SuperTextField;
 
+import com.aj.form.CatalogueItem;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -13,6 +14,8 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
+
+import reusuables.LapDesignTemplate;
 
 public class OldCatalogueItemView extends FormLayout {
 	private static final long serialVersionUID = -2547872986384246417L;

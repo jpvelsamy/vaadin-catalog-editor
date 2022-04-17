@@ -1,4 +1,4 @@
-package com.aj.view;
+package reusuables;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,9 +1,10 @@
-package com.aj.view;
+package reusuables;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.aj.form.CatalogueItem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

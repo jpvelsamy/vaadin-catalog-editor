@@ -1,4 +1,4 @@
-package com.aj.view;
+package com.aj.form;
 
 
 import java.io.InputStream;
@@ -18,28 +18,36 @@ import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 
+import reusuables.LayoutUtil;
 
-public class CuteCatalogItemView extends FlexLayout 
+
+public class CatalogItemView extends FlexLayout 
 {
 	
 	private static final long serialVersionUID = 7933518275280896892L;
-	
-	private final FlexLayout catalogContainer = getFlexVerticalLayout(true);
-	private CatalogueItem catalogueItem;
-	private Button deleteCard;
-	private SuperTextField title = new SuperTextField("Title");
-	private SuperTextField pricingValue = new SuperTextField("Pricing Value");
-	private SuperTextField alternateValue = new SuperTextField("Alternate Value");
-	private SuperTextField ctaDemo = new SuperTextField("ctaDemo");
-	private SuperTextArea ctaEnroll = new SuperTextArea("ctaEnroll");
-	private SuperTextField ctaQuote = new SuperTextField("ctaQuote");
-	private Integer position;
+		
+	protected final FlexLayout catalogContainer = LayoutUtil.getFlexVerticalLayout(true);	
+	protected Button resetCard;
+	protected SuperTextField title = new SuperTextField();
+	protected SuperTextField pricingValue = new SuperTextField("Pricing Value");
+	protected SuperTextField alternateValue = new SuperTextField("Alternate Value");
+	protected SuperTextField ctaDemo = new SuperTextField("ctaDemo");
+	protected SuperTextArea ctaEnroll = new SuperTextArea("ctaEnroll");
+	protected SuperTextField ctaQuote = new SuperTextField("ctaQuote");
+	protected Integer position;
 
-	private H3 catalogHeader;
+	protected H3 catalogHeader;
+	protected CatalogueItem catalogueItem;
 	
-	public CuteCatalogItemView(CatalogueItem item, Integer index)
+	public CatalogItemView()
 	{
-		this.position = index;
+		
+	}
+	
+	public CatalogItemView(CatalogueItem item)
+	{
+		this.catalogueItem = item;
+		this.position = item.getPosition();
 		setFlexDirection(FlexDirection.COLUMN);
 		setFlexWrap(FlexWrap.WRAP);
 		setAlignContent(ContentAlignment.START);
@@ -48,14 +56,12 @@ public class CuteCatalogItemView extends FlexLayout
 		StyleUtil.setMarginLeft(this, LumoConstants.LUMO_SPACE_L);
 		StyleUtil.setMarginRight(this, LumoConstants.LUMO_SPACE_S);
 		
-		catalogHeader = new H3("Section "+index);
+		catalogHeader = new H3("Section "+this.position);
 		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
 		add(catalogHeader);
 		setAlignSelf(Alignment.CENTER, catalogHeader);
 		
-		ComboBox<LapDesignTemplate> lapDesign = new ComboBox<>();
-		lapDesign.setPlaceholder("Select Design");
-		add(lapDesign);
+		
 		
 		catalogContainer.addClassName("curved-border");
 		catalogContainer.setAlignItems(Alignment.CENTER);
@@ -110,21 +116,14 @@ public class CuteCatalogItemView extends FlexLayout
 		add(catalogContainer);
 	}
 	
-	public static FlexLayout getFlexVerticalLayout(boolean wrap) {
-		FlexLayout flexLayout = new FlexLayout();
-		flexLayout.setWidthFull();
-		flexLayout.setFlexDirection(FlexDirection.COLUMN);
-		flexLayout.setFlexWrap(wrap ? FlexWrap.WRAP : FlexWrap.NOWRAP);
-		flexLayout.setAlignContent(ContentAlignment.START);
-		return flexLayout;
-	}
+	
 
 	public Integer getIndex() {
 		return this.position;
 		
 	}
 
-	public void setIndex(int newPosition) {
+	public void setIndex(int newPosition) {		
 		this.position = newPosition;
 		this.catalogHeader.removeAll();
 		this.catalogHeader.add("Section "+this.position);

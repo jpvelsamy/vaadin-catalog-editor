@@ -1,4 +1,4 @@
-package com.aj.view;
+package reusuables;
 
 import java.io.Serializable;
 

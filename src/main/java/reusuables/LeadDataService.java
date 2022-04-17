@@ -1,4 +1,4 @@
-package com.aj.view;
+package reusuables;
 
 import org.springframework.stereotype.Service;
 

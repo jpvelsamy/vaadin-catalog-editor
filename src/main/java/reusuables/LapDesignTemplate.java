@@ -1,5 +1,6 @@
-package com.aj.view;
+package reusuables;
 
+import com.aj.view.CatalogueItemDesign;
 
 /*
  * Shiva's vision - Make this object embody the how the form is setup from a flow standpoint and how the form is setup

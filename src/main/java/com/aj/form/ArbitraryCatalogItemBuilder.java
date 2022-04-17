@@ -1,6 +1,11 @@
-package com.aj.view;
+package com.aj.form;
 
 import java.util.Collection;
+
+import com.aj.view.CatalogueItemDesign;
+
+import reusuables.LapDesignTemplate;
+import reusuables.LeadAcquisitionPage;
 
 public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 
@@ -33,6 +38,13 @@ public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 			return new CatalogItemView(item);
 		else
 			return new CatalogItemView(item);
+	}
+
+
+	@Override
+	public CatalogItemView buildNewCard(int position) {
+		
+		return new NewCatalogItemView(position);
 	}
 
 }

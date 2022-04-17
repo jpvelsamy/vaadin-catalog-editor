@@ -1,4 +1,4 @@
-package com.aj.view;
+package com.aj.form;
 
 
 import java.io.InputStream;
@@ -18,8 +18,10 @@ import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 
+import reusuables.LapDesignTemplate;
 
-public class CatalogItemView extends FlexLayout 
+
+public class CuteCatalogItemView extends FlexLayout 
 {
 	
 	private static final long serialVersionUID = 7933518275280896892L;
@@ -37,9 +39,9 @@ public class CatalogItemView extends FlexLayout
 
 	private H3 catalogHeader;
 	
-	public CatalogItemView(CatalogueItem item)
+	public CuteCatalogItemView(CatalogueItem item, Integer index)
 	{
-		this.position = item.getPosition();
+		this.position = index;
 		setFlexDirection(FlexDirection.COLUMN);
 		setFlexWrap(FlexWrap.WRAP);
 		setAlignContent(ContentAlignment.START);
@@ -48,12 +50,14 @@ public class CatalogItemView extends FlexLayout
 		StyleUtil.setMarginLeft(this, LumoConstants.LUMO_SPACE_L);
 		StyleUtil.setMarginRight(this, LumoConstants.LUMO_SPACE_S);
 		
-		catalogHeader = new H3("Section "+this.position);
+		catalogHeader = new H3("Section "+index);
 		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
 		add(catalogHeader);
 		setAlignSelf(Alignment.CENTER, catalogHeader);
 		
-		
+		ComboBox<LapDesignTemplate> lapDesign = new ComboBox<>();
+		lapDesign.setPlaceholder("Select Design");
+		add(lapDesign);
 		
 		catalogContainer.addClassName("curved-border");
 		catalogContainer.setAlignItems(Alignment.CENTER);
@@ -122,7 +126,7 @@ public class CatalogItemView extends FlexLayout
 		
 	}
 
-	public void setIndex(int newPosition) {		
+	public void setIndex(int newPosition) {
 		this.position = newPosition;
 		this.catalogHeader.removeAll();
 		this.catalogHeader.add("Section "+this.position);

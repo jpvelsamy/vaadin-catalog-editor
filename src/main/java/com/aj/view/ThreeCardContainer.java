@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
+import com.aj.form.CatalogueItem;
+import com.aj.form.CuteCatalogItemView;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 public class ThreeCardContainer extends HorizontalLayout {
