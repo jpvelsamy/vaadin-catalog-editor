@@ -15,13 +15,13 @@ public class BulletTextField extends CustomField<TextBullet> {
 	private Label label;
 	private TextField amount;
 	private Button deleteButton= new Button("", new Icon(VaadinIcon.TRASH));
-	private TextContainer textContainer;
+	private BulletContainer bulletContainer;
 	
-	public BulletTextField(int counter, TextContainer textContainer) {
+	public BulletTextField(int counter, BulletContainer textContainer) {
 		this.label = new Label(Integer.toString(counter));
 		this.amount = new TextField();
 		this.amount.setWidth(390, Unit.PIXELS);
-		this.textContainer = textContainer;
+		this.bulletContainer = textContainer;
 		HorizontalLayout layout = new HorizontalLayout(label, amount, deleteButton);
 		// Removes default spacing
 		layout.setSpacing(false);
@@ -30,7 +30,7 @@ public class BulletTextField extends CustomField<TextBullet> {
 
 		add(layout);
 		deleteButton.addClickListener(event->{
-			this.textContainer.remove(this);
+			this.bulletContainer.remove(this);
 		});
 	}
 

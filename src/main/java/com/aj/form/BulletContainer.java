@@ -7,14 +7,14 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 
-public class TextContainer extends FlexLayout{
+public class BulletContainer extends FlexLayout
+{
 
-	
-	private static final long serialVersionUID = -2322710206497039634L;	
+	private static final long serialVersionUID = 6284423363964713884L;
 	private Button addBullet = new Button("", new Icon(VaadinIcon.PLUS_CIRCLE));
 	private AtomicInteger counter = new AtomicInteger(1);
 	
-	public TextContainer()
+	public BulletContainer()
 	{
 		setFlexDirection(FlexDirection.COLUMN);
 		setFlexWrap(FlexWrap.WRAP);
@@ -25,5 +25,4 @@ public class TextContainer extends FlexLayout{
 			add(field);
 		});
 	}
-
 }
