@@ -13,6 +13,7 @@ public class NewCatalogItemView extends CatalogItemView{
 	private AssetContainer assetContainer;
 	private PricingContainer pricingContainer;
 	private ContentContainer contentContainer;
+	//private ButtonContainer buttonContainer;
 	
 	public NewCatalogItemView(int position)
 	{
@@ -33,11 +34,13 @@ public class NewCatalogItemView extends CatalogItemView{
 		this.resetCard = new Button();
 		setAlignSelf(Alignment.END, this.resetCard);
 		this.title.setPlaceholder("Enter your title");
+		
 		this.title.setWidth(410, Unit.PIXELS);
 		this.resetCard.setText("Reset");
 		this.assetContainer = new AssetContainer();
 		this.pricingContainer = new PricingContainer();
 		this.contentContainer = new ContentContainer();
+		//this.buttonContainer  = new ButtonContainer();
 		addAll();
 		
 	}
@@ -49,6 +52,7 @@ public class NewCatalogItemView extends CatalogItemView{
 		add(this.assetContainer);
 		add(this.pricingContainer);
 		add(this.contentContainer);
+		//add(this.buttonContainer);
 	}
 	
 	
