@@ -31,7 +31,7 @@ public class SingleItemCatalogCarousel extends Div{
 	private static final long serialVersionUID = 5381096124970188761L;
 	private final HorizontalLayout carouselContainer = new HorizontalLayout();
 	private final Div carouselHolder = new Div();
-	private Map<Integer, CuteCatalogItem> itemMap = new LinkedHashMap<Integer, CuteCatalogItem>();
+	private Map<Integer, CuteCatalogItemView> itemMap = new LinkedHashMap<Integer, CuteCatalogItemView>();
 	private final AtomicInteger counter = new AtomicInteger(0);
 	private Integer activeIndex = new Integer(0);
 	private Button previous;
@@ -46,7 +46,7 @@ public class SingleItemCatalogCarousel extends Div{
 		addCard.setIcon(new Icon(VaadinIcon.PLUS));
 		addCard.addClickListener(event -> {
 			Integer position = counter.incrementAndGet();
-			CuteCatalogItem catalogItem = new CuteCatalogItem(null, position);
+			CuteCatalogItemView catalogItem = new CuteCatalogItemView(null, position);
 			itemMap.put(activeIndex, catalogItem);
 			activeIndex = itemMap.size();
 			this.carouselHolder.removeAll();
@@ -55,7 +55,7 @@ public class SingleItemCatalogCarousel extends Div{
 		});
 		previous = new Button("", new Icon(VaadinIcon.ANGLE_DOUBLE_LEFT));
 		next = new Button("", new Icon(VaadinIcon.ANGLE_DOUBLE_RIGHT));
-		CuteCatalogItem firstPiece = new CuteCatalogItem(null, 0);
+		CuteCatalogItemView firstPiece = new CuteCatalogItemView(null, 0);
 		itemMap.put(0, firstPiece);
 		carouselHolder.add(firstPiece);
 		carouselContainer.add(previous);
@@ -78,7 +78,7 @@ public class SingleItemCatalogCarousel extends Div{
 			if (activeIndex >= 0)
 			{
 				this.carouselHolder.removeAll();
-				CuteCatalogItem itemView = this.itemMap.get(activeIndex);
+				CuteCatalogItemView itemView = this.itemMap.get(activeIndex);
 				this.carouselHolder.add(itemView);				
 			}
 		});
@@ -95,7 +95,7 @@ public class SingleItemCatalogCarousel extends Div{
 			if (activeIndex >= 0)
 			{
 				this.carouselHolder.removeAll();
-				CuteCatalogItem itemView = this.itemMap.get(activeIndex);
+				CuteCatalogItemView itemView = this.itemMap.get(activeIndex);
 				this.carouselHolder.add(itemView);	
 			}
 		});		

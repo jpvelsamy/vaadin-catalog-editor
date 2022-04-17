@@ -9,24 +9,24 @@ import org.apache.commons.lang3.tuple.ImmutableTriple;
 
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
-public class ThreeCardContainer extends HorizontalLayout {
+public class CatalogCarouselContainer extends HorizontalLayout {
 
 	private static final long serialVersionUID = -1694750111567168590L;
-	private Map<Integer, CuteCatalogItemView> itemMap = new LinkedHashMap<Integer, CuteCatalogItemView>();
+	private Map<Integer, CatalogItemView> itemMap = new LinkedHashMap<Integer, CatalogItemView>();
 	// private final AtomicInteger counter = new AtomicInteger(1);
-	private CuteCatalogItemView firstItem;
-	private CuteCatalogItemView secondItem;
-	private CuteCatalogItemView thirdItem;
+	private CatalogItemView firstItem;
+	private CatalogItemView secondItem;
+	private CatalogItemView thirdItem;
 
-	public ThreeCardContainer() {
+	public CatalogCarouselContainer() {
 
 	}
 
-	public ThreeCardContainer(Collection<CatalogueItem> itemCollection) {
+	public CatalogCarouselContainer(Collection<CatalogueItem> itemCollection) {
 		final AtomicInteger ephCounter = new AtomicInteger(0);
 		itemCollection.forEach(item -> {
 			int index = ephCounter.getAndIncrement();
-			CuteCatalogItemView catalogComponent = new CuteCatalogItemView(item, index);
+			CatalogItemView catalogComponent = new CatalogItemView(item, index);
 			itemMap.put(index, catalogComponent);
 		});
 		final int firstIndex = itemMap.size();
@@ -47,14 +47,14 @@ public class ThreeCardContainer extends HorizontalLayout {
 		updateView(indexTuple);
 	}
 
-	public void addFirstCard(CuteCatalogItemView newItem) {
+	public void addFirstCard(CatalogItemView newItem) {
 		this.itemMap.put(newItem.getIndex(), newItem);
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = new ImmutableTriple<Integer, Integer, Integer>(1,
 				0, -1);
 		updateView(indexTuple);
 	}
 
-	public void addCard(CuteCatalogItemView newItem) {
+	public void addCard(CatalogItemView newItem) {
 		final int size = this.itemMap.size();
 		final int newPosition = size + 1;
 		newItem.setIndex(newPosition);
@@ -68,7 +68,7 @@ public class ThreeCardContainer extends HorizontalLayout {
 	 * 
 	 * @param removeCandidate
 	 */
-	public void removeCard(CuteCatalogItemView removeCandidate) {
+	public void removeCard(CatalogItemView removeCandidate) {
 		Integer index = removeCandidate.getIndex();
 		this.itemMap.remove(index, removeCandidate);
 	}
@@ -95,14 +95,14 @@ public class ThreeCardContainer extends HorizontalLayout {
 			}
 		} else {
 			if (this.itemMap.containsKey(firstItemIndex)) {
-				CuteCatalogItemView nthItem = this.itemMap.get(firstItemIndex);
+				CatalogItemView nthItem = this.itemMap.get(firstItemIndex);
 				if (nthItem != null) {
 					// replace(firstItem, nthItem);
 					remove(firstItem);
 					firstItem = nthItem;
 				}
 				if (this.itemMap.containsKey(secondItemIndex)) {
-					CuteCatalogItemView nplusOnethItem = this.itemMap.get(secondItemIndex);
+					CatalogItemView nplusOnethItem = this.itemMap.get(secondItemIndex);
 					if (nplusOnethItem != null) {
 						// replace(secondItem, nplusOnethItem);
 						if (secondItem != null)
@@ -110,7 +110,7 @@ public class ThreeCardContainer extends HorizontalLayout {
 						secondItem = nplusOnethItem;
 					}
 					if (this.itemMap.containsKey(thirdItemIndex)) {
-						CuteCatalogItemView nplusTwothItem = this.itemMap.get(thirdItemIndex);
+						CatalogItemView nplusTwothItem = this.itemMap.get(thirdItemIndex);
 						if (nplusTwothItem != null) {
 							// replace(thirdItem, nplusTwothItem);
 							if (thirdItem != null)

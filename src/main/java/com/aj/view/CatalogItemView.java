@@ -1,21 +1,30 @@
 package com.aj.view;
 
+
 import java.io.InputStream;
 import java.util.Objects;
 
 import org.vaadin.miki.superfields.text.SuperTextArea;
 import org.vaadin.miki.superfields.text.SuperTextField;
 
+import com.aj.LumoConstants;
+import com.aj.StyleUtil;
+import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 
-public class CatalogueItemView extends FormLayout {
-	private static final long serialVersionUID = -2547872986384246417L;
+
+public class CatalogItemView extends FlexLayout 
+{
+	
+	private static final long serialVersionUID = 7933518275280896892L;
+	
+	private final FlexLayout catalogContainer = getFlexVerticalLayout(true);
 	private CatalogueItem catalogueItem;
 	private Button deleteCard;
 	private SuperTextField title = new SuperTextField("Title");
@@ -26,21 +35,42 @@ public class CatalogueItemView extends FormLayout {
 	private SuperTextField ctaQuote = new SuperTextField("ctaQuote");
 	private Integer position;
 
-	public CatalogueItemView(CatalogueItem catalogueItem, Integer position) {
-
-		this.position = position;
-		addClassName("CI-View");
-		setWidthFull();
-		getStyle().set("margin-top", "40px");
-		getStyle().set("margin-right", "1px");
-
+	private H3 catalogHeader;
+	
+	public CatalogItemView(CatalogueItem item, Integer index)
+	{
+		this.position = index;
+		setFlexDirection(FlexDirection.COLUMN);
+		setFlexWrap(FlexWrap.WRAP);
+		setAlignContent(ContentAlignment.START);
+		setWidth(410, Unit.PIXELS);
+		StyleUtil.setMarginTop(this, LumoConstants.LUMO_SPACE_XL);
+		StyleUtil.setMarginLeft(this, LumoConstants.LUMO_SPACE_L);
+		StyleUtil.setMarginRight(this, LumoConstants.LUMO_SPACE_S);
+		
+		catalogHeader = new H3("Section "+index);
+		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
+		add(catalogHeader);
+		setAlignSelf(Alignment.CENTER, catalogHeader);
+		
 		ComboBox<LapDesignTemplate> lapDesign = new ComboBox<>();
 		lapDesign.setPlaceholder("Select Design");
 		add(lapDesign);
-
+		
+		catalogContainer.addClassName("curved-border");
+		catalogContainer.setAlignItems(Alignment.CENTER);
+		catalogContainer.setAlignContent(ContentAlignment.CENTER);
+		
+		Image bgImage = new Image();
+		bgImage.setMaxHeight("300px");
+		bgImage.setMaxWidth("300px");
+		bgImage.setSrc("https://res.cloudinary.com/caseyforjuno/image/upload/v1625040584/76929575_m.jpg.jpg");
+		bgImage.getStyle().set("border-radius", "25px");// border-radius: 20p
+		catalogContainer.add(bgImage);
+		
 		if (Objects.nonNull(catalogueItem)) {
 
-			title.setValue(this.catalogueItem.getTitle());
+			//title.setValue(this.catalogueItem.getTitle());
 			pricingValue.setValue(this.catalogueItem.getPricingValue());
 			alternateValue.setValue(this.catalogueItem.getAlternatePricingValue());
 			ctaDemo.setValue(this.catalogueItem.getCtaDemo());
@@ -51,11 +81,6 @@ public class CatalogueItemView extends FormLayout {
 		{
 			title.setValue(Integer.toString(position));
 		}
-
-		deleteCard = new Button("Delete");
-		deleteCard.setIcon(new Icon(VaadinIcon.TRASH));
-		deleteCard.setIconAfterText(true);
-
 		MultiFileMemoryBuffer bufferImage = new MultiFileMemoryBuffer();
 		Upload uploadImages = new Upload(bufferImage);
 		uploadImages.setAutoUpload(true);
@@ -80,16 +105,31 @@ public class CatalogueItemView extends FormLayout {
 
 		});
 
-		add(this.deleteCard, this.title, this.pricingValue, this.alternateValue, this.ctaDemo, this.ctaEnroll,
+		catalogContainer.add(this.title, this.pricingValue, this.alternateValue, this.ctaDemo, this.ctaEnroll,
 				this.ctaQuote, uploadImages, uploadVideos);
-	}
-
-	public Button getDeleteCard() {
-		return deleteCard;
+		add(catalogContainer);
 	}
 	
-	public Integer getPosition()
-	{
-		return this.position;
+	public static FlexLayout getFlexVerticalLayout(boolean wrap) {
+		FlexLayout flexLayout = new FlexLayout();
+		flexLayout.setWidthFull();
+		flexLayout.setFlexDirection(FlexDirection.COLUMN);
+		flexLayout.setFlexWrap(wrap ? FlexWrap.WRAP : FlexWrap.NOWRAP);
+		flexLayout.setAlignContent(ContentAlignment.START);
+		return flexLayout;
 	}
+
+	public Integer getIndex() {
+		return this.position;
+		
+	}
+
+	public void setIndex(int newPosition) {
+		this.position = newPosition;
+		this.catalogHeader.removeAll();
+		this.catalogHeader.add("Section "+this.position);
+		title.setValue(Integer.toString(position));
+		
+	}
+
 }

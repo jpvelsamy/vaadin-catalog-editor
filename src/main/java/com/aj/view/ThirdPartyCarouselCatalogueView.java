@@ -65,19 +65,19 @@ public class ThirdPartyCarouselCatalogueView extends VerticalLayout {
 
 	private Component createSlideContent(Carousel cf) {
 
-		CatalogueItemView catalogueItemView = new CatalogueItemView(null, counter.incrementAndGet());
-		Slide slide = new Slide(catalogueItemView);
+		OldCatalogueItemView oldCatalogueItemView = new OldCatalogueItemView(null, counter.incrementAndGet());
+		Slide slide = new Slide(oldCatalogueItemView);
 		int index = counter.incrementAndGet();
 		this.slideMap.put(new Long(index), slide);
 		Slide[] array = this.slideMap.values().toArray(new Slide[0]);
 		
 		cf.setSlides(array);
 
-		catalogueItemView.getDeleteCard().addClickListener(delEvent -> {
+		oldCatalogueItemView.getDeleteCard().addClickListener(delEvent -> {
 			this.slideMap.remove(index);
 			cf.setSlides(this.slideMap.values().toArray(new Slide[0]));
 		});
-		return catalogueItemView;
+		return oldCatalogueItemView;
 	}
 
 }

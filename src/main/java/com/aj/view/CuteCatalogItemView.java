@@ -19,7 +19,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
 
 
-public class CuteCatalogItem extends FlexLayout 
+public class CuteCatalogItemView extends FlexLayout 
 {
 	
 	private static final long serialVersionUID = 7933518275280896892L;
@@ -37,7 +37,7 @@ public class CuteCatalogItem extends FlexLayout
 
 	private H3 catalogHeader;
 	
-	public CuteCatalogItem(CatalogueItem item, Integer index)
+	public CuteCatalogItemView(CatalogueItem item, Integer index)
 	{
 		this.position = index;
 		setFlexDirection(FlexDirection.COLUMN);
