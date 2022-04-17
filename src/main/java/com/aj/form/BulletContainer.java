@@ -20,6 +20,8 @@ public class BulletContainer extends FlexLayout
 		setFlexWrap(FlexWrap.WRAP);
 		add(addBullet);
 		setAlignSelf(Alignment.END, addBullet);
+		BulletTextField defaultField = new BulletTextField(counter.getAndIncrement(), this);	
+		add(defaultField);
 		addBullet.addClickListener(event->{
 			BulletTextField field = new BulletTextField(counter.getAndIncrement(), this);			
 			add(field);
