@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import reusuables.AskJunoImage;
+import com.aj.reusuables.AskJunoImage;
 
 public class CatalogueItem {
 

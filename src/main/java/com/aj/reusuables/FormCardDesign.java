@@ -1,4 +1,4 @@
-package reusuables;
+package com.aj.reusuables;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

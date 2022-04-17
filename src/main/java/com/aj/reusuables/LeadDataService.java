@@ -1,4 +1,4 @@
-package reusuables;
+package com.aj.reusuables;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package reusuables;
+package com.aj.reusuables;
 
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.FlexLayout.ContentAlignment;

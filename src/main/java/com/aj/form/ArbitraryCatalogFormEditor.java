@@ -5,6 +5,10 @@ import java.util.Set;
 
 import javax.annotation.security.PermitAll;
 
+import com.aj.reusuables.LapDesignTemplate;
+import com.aj.reusuables.LapDesignTemplateConstant;
+import com.aj.reusuables.LeadAcquisitionPage;
+import com.aj.reusuables.LeadDataService;
 import com.aj.view.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -19,11 +23,6 @@ import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.OptionalParameter;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import reusuables.LapDesignTemplate;
-import reusuables.LapDesignTemplateConstant;
-import reusuables.LeadAcquisitionPage;
-import reusuables.LeadDataService;
 
 @PermitAll
 @Route(value = ArbitraryCatalogFormEditor.ROUTE_NAME, layout = MainLayout.class)

@@ -2,10 +2,9 @@ package com.aj.form;
 
 import java.util.Collection;
 
+import com.aj.reusuables.LapDesignTemplate;
+import com.aj.reusuables.LeadAcquisitionPage;
 import com.aj.view.CatalogueItemDesign;
-
-import reusuables.LapDesignTemplate;
-import reusuables.LeadAcquisitionPage;
 
 public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 

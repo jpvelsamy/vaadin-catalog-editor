@@ -9,6 +9,7 @@ import org.vaadin.miki.superfields.text.SuperTextField;
 
 import com.aj.LumoConstants;
 import com.aj.StyleUtil;
+import com.aj.reusuables.LapDesignTemplate;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -17,8 +18,6 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
-
-import reusuables.LapDesignTemplate;
 
 
 public class CuteCatalogItemView extends FlexLayout 

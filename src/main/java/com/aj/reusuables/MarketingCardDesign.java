@@ -1,4 +1,4 @@
-package reusuables;
+package com.aj.reusuables;
 
 import com.aj.view.CatalogueItemDesign;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

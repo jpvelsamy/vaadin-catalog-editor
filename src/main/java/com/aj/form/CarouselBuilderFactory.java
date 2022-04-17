@@ -1,6 +1,6 @@
 package com.aj.form;
 
-import reusuables.LapDesignTemplate;
+import com.aj.reusuables.LapDesignTemplate;
 
 public class CarouselBuilderFactory {
 

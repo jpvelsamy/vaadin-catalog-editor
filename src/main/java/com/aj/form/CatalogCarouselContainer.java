@@ -6,10 +6,9 @@ import java.util.Map;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
+import com.aj.reusuables.LapDesignTemplate;
+import com.aj.reusuables.LeadAcquisitionPage;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-
-import reusuables.LapDesignTemplate;
-import reusuables.LeadAcquisitionPage;
 
 public class CatalogCarouselContainer extends HorizontalLayout {
 
