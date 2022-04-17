@@ -11,6 +11,8 @@ public class NewCatalogItemView extends CatalogItemView{
 	
 	private static final long serialVersionUID = 2086073785008407999L;
 	private AssetContainer assetContainer;
+	private PricingContainer pricingContainer;
+	private ContentContainer contentContainer;
 	
 	public NewCatalogItemView(int position)
 	{
@@ -34,6 +36,8 @@ public class NewCatalogItemView extends CatalogItemView{
 		this.title.setWidth(410, Unit.PIXELS);
 		this.resetCard.setText("Reset");
 		this.assetContainer = new AssetContainer();
+		this.pricingContainer = new PricingContainer();
+		this.contentContainer = new ContentContainer();
 		addAll();
 		
 	}
@@ -43,6 +47,8 @@ public class NewCatalogItemView extends CatalogItemView{
 		add(this.resetCard);
 		add(this.title);
 		add(this.assetContainer);
+		add(this.pricingContainer);
+		add(this.contentContainer);
 	}
 	
 	
