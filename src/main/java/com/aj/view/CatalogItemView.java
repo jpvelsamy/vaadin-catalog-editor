@@ -37,9 +37,9 @@ public class CatalogItemView extends FlexLayout
 
 	private H3 catalogHeader;
 	
-	public CatalogItemView(CatalogueItem item, Integer index)
+	public CatalogItemView(CatalogueItem item)
 	{
-		this.position = index;
+		this.position = item.getPosition();
 		setFlexDirection(FlexDirection.COLUMN);
 		setFlexWrap(FlexWrap.WRAP);
 		setAlignContent(ContentAlignment.START);
@@ -48,14 +48,12 @@ public class CatalogItemView extends FlexLayout
 		StyleUtil.setMarginLeft(this, LumoConstants.LUMO_SPACE_L);
 		StyleUtil.setMarginRight(this, LumoConstants.LUMO_SPACE_S);
 		
-		catalogHeader = new H3("Section "+index);
+		catalogHeader = new H3("Section "+this.position);
 		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
 		add(catalogHeader);
 		setAlignSelf(Alignment.CENTER, catalogHeader);
 		
-		ComboBox<LapDesignTemplate> lapDesign = new ComboBox<>();
-		lapDesign.setPlaceholder("Select Design");
-		add(lapDesign);
+		
 		
 		catalogContainer.addClassName("curved-border");
 		catalogContainer.setAlignItems(Alignment.CENTER);
@@ -124,7 +122,7 @@ public class CatalogItemView extends FlexLayout
 		
 	}
 
-	public void setIndex(int newPosition) {
+	public void setIndex(int newPosition) {		
 		this.position = newPosition;
 		this.catalogHeader.removeAll();
 		this.catalogHeader.add("Section "+this.position);

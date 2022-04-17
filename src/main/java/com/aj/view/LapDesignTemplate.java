@@ -13,6 +13,8 @@ public class LapDesignTemplate {
 
     private String name;
 
+    private String templateType=LapDesignTemplateConstant.DEFAULT_PRICING_CARD;
+    
     private String mappingUrl;
 
     private String junoBusinessId;
@@ -148,4 +150,52 @@ public class LapDesignTemplate {
     public void setAuthorityId(String authorityId) {
         this.authorityId = authorityId;
     }
+
+	public String getTemplateType() {
+		return templateType;
+	}
+
+	public void setTemplateType(String templateType) {
+		this.templateType = templateType;
+	}
+
+	public String getMappingUrl() {
+		return mappingUrl;
+	}
+
+	public void setMappingUrl(String mappingUrl) {
+		this.mappingUrl = mappingUrl;
+	}
+
+	public MarketingCardDesign getMarketingCardDesign() {
+		return marketingCardDesign;
+	}
+
+	public void setMarketingCardDesign(MarketingCardDesign marketingCardDesign) {
+		this.marketingCardDesign = marketingCardDesign;
+	}
+
+	public FormCardDesign getFormCardDesign() {
+		return formCardDesign;
+	}
+
+	public void setFormCardDesign(FormCardDesign formCardDesign) {
+		this.formCardDesign = formCardDesign;
+	}
+
+	public ThankyouCardDesign getThankyouCardDesign() {
+		return thankyouCardDesign;
+	}
+
+	public void setThankyouCardDesign(ThankyouCardDesign thankyouCardDesign) {
+		this.thankyouCardDesign = thankyouCardDesign;
+	}
+
+	public CatalogueItemDesign findCatalogDesign(String itemDesignId) {
+		return null;
+		
+	}
+    
+    
+    
 }

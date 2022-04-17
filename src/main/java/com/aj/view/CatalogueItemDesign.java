@@ -17,9 +17,13 @@ public class CatalogueItemDesign {
     
     private String imageLayoutAlignment;
     
+    private boolean isBootStrapCard=false;
+    
     private final String imageLayoutPosition = "left";
     
     private final String contentLayoutPosition = "right";
+    
+    
 
 	public String getId() {
 		return id;
@@ -67,6 +71,14 @@ public class CatalogueItemDesign {
 
 	public String getContentLayoutPosition() {
 		return contentLayoutPosition;
+	}
+
+	public boolean isBootStrapCard() {
+		return isBootStrapCard;
+	}
+
+	public void setBootStrapCard(boolean isBootStrapCard) {
+		this.isBootStrapCard = isBootStrapCard;
 	}
     
     

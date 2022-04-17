@@ -44,6 +44,8 @@ public class CatalogueItem {
 	private Map<String, String> catalogueItemMetrics = new HashMap<String, String>();
 
 	private String videoUrl;
+	
+	private Integer position;
 
 	public String getTitle() {
 		return title;
@@ -188,5 +190,23 @@ public class CatalogueItem {
 	public void setCatalogueItemDesignId(String catalogueItemDesignId) {
 		this.catalogueItemDesignId = catalogueItemDesignId;
 	}
+
+	public AskJunoImage getAskJunoImage() {
+		return askJunoImage;
+	}
+
+	public void setAskJunoImage(AskJunoImage askJunoImage) {
+		this.askJunoImage = askJunoImage;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+	
+	
 
 }

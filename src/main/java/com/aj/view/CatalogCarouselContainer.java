@@ -3,7 +3,6 @@ package com.aj.view;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
@@ -13,21 +12,33 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 
 	private static final long serialVersionUID = -1694750111567168590L;
 	private Map<Integer, CatalogItemView> itemMap = new LinkedHashMap<Integer, CatalogItemView>();
-	// private final AtomicInteger counter = new AtomicInteger(1);
+	private CarouselItemBuilder carouselItemBuilder;
 	private CatalogItemView firstItem;
 	private CatalogItemView secondItem;
 	private CatalogItemView thirdItem;
+	private LapDesignTemplate template;
 
 	public CatalogCarouselContainer() {
 
 	}
 
-	public CatalogCarouselContainer(Collection<CatalogueItem> itemCollection) {
-		final AtomicInteger ephCounter = new AtomicInteger(0);
+	public void swapTemplate(LapDesignTemplate template) {
+		this.template = template;
+		carouselItemBuilder = CarouselBuilderFactory.create(this.template);
+	}
+
+	public void loadLap(LeadAcquisitionPage lap) {
+
+		Collection<CatalogueItem> itemCollection = lap.getMarketingCard().getCatalogueDetails();
+
+		// For whatever reason the lambda editor is not giving proper intellisense,
+		// hence having the below line for that purpose
+		// CatalogueItem item2 = itemCollection.iterator().next();
+
 		itemCollection.forEach(item -> {
-			int index = ephCounter.getAndIncrement();
-			CatalogItemView catalogComponent = new CatalogItemView(item, index);
-			itemMap.put(index, catalogComponent);
+
+			CatalogItemView catalogComponent = carouselItemBuilder.build(item);
+			itemMap.put(item.getPosition(), catalogComponent);
 		});
 		final int firstIndex = itemMap.size();
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(firstIndex);
@@ -36,7 +47,7 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 	}
 
 	public void moveForward() {
-		final int nthPosition = this.thirdItem.getIndex()+1;
+		final int nthPosition = this.thirdItem.getIndex() + 1;
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getOlderIndexes(nthPosition);
 		updateView(indexTuple);
 	}
@@ -47,18 +58,13 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 		updateView(indexTuple);
 	}
 
-	public void addFirstCard(CatalogItemView newItem) {
-		this.itemMap.put(newItem.getIndex(), newItem);
-		final ImmutableTriple<Integer, Integer, Integer> indexTuple = new ImmutableTriple<Integer, Integer, Integer>(1,
-				0, -1);
-		updateView(indexTuple);
-	}
-
-	public void addCard(CatalogItemView newItem) {
+	public void addNewCard(CatalogueItem newItem) {
 		final int size = this.itemMap.size();
 		final int newPosition = size + 1;
-		newItem.setIndex(newPosition);
-		this.itemMap.put(newPosition, newItem);
+
+		CatalogItemView newItemView = this.carouselItemBuilder.build(newItem);
+		newItemView.setIndex(newPosition);
+		this.itemMap.put(newPosition, newItemView);
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(newPosition);
 		updateView(indexTuple);
 	}
