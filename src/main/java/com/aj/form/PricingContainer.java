@@ -16,9 +16,14 @@ public class PricingContainer extends FlexLayout{
 		setFlexWrap(FlexWrap.NOWRAP);
 		defaultPricingField = new CurrencyField();
 		alternatePricingField  = new CurrencyField("USD");
-		setAlignSelf(Alignment.CENTER, defaultPricingField);
-		setAlignSelf(Alignment.CENTER, alternatePricingField);
+	/*	setAlignSelf(Alignment.CENTER, defaultPricingField);
+		setAlignSelf(Alignment.CENTER, alternatePricingField);*/
 		add(this.defaultPricingField);
 		add(this.alternatePricingField);
+	}
+
+	public void getResetPrice() {
+		defaultPricingField.getResetAmount();
+		alternatePricingField.getResetAmount();
 	}
 }

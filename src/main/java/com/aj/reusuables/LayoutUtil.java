@@ -13,7 +13,7 @@ public class LayoutUtil {
 		flexLayout.setWidthFull();
 		flexLayout.setFlexDirection(FlexDirection.COLUMN);
 		flexLayout.setFlexWrap(wrap ? FlexWrap.WRAP : FlexWrap.NOWRAP);
-		flexLayout.setAlignContent(ContentAlignment.START);
+		flexLayout.setAlignContent(ContentAlignment.CENTER);
 		return flexLayout;
 	}
 }

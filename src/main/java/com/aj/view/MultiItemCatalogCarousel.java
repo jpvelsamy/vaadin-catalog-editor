@@ -1,19 +1,17 @@
 package com.aj.view;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.annotation.security.PermitAll;
-
 import com.aj.form.CuteCatalogItemView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
+import javax.annotation.security.PermitAll;
 
 @PermitAll
 @Route(value = MultiItemCatalogCarousel.ROUTE_NAME, layout = MainLayout.class)

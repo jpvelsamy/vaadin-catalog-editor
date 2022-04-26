@@ -50,4 +50,9 @@ public class BulletTextField extends CustomField<TextBullet> {
 		label.setText(Integer.toString(bullet.getId()));
 		amount.setValue(bullet.getBulletText());
 	}
+
+	public void getResetBulletText() {
+
+		amount.clear();
+	}
 }

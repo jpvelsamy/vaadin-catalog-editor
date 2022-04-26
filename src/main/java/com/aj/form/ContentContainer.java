@@ -18,9 +18,8 @@ public class ContentContainer extends FlexLayout{
 		textContainer = new TextContainer();
 		add(textContainer);
 	}
-	
-	
-	
-	
 
+	public void getResetContent() {
+		textContainer.getResetPara();
+	}
 }

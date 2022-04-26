@@ -1,14 +1,13 @@
 package com.aj.form;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-
 import com.aj.reusuables.LapDesignTemplate;
 import com.aj.reusuables.LeadAcquisitionPage;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CatalogCarouselContainer extends HorizontalLayout {
 
@@ -17,7 +16,7 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 	private CarouselItemBuilder carouselItemBuilder;
 	private CatalogItemView firstItem;
 	private CatalogItemView secondItem;
-	private CatalogItemView thirdItem;
+//	private CatalogItemView thirdItem;
 	private LapDesignTemplate template;
 
 	public CatalogCarouselContainer() {
@@ -43,20 +42,20 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 			itemMap.put(item.getPosition(), catalogComponent);
 		});
 		final int firstIndex = itemMap.size();
-		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(firstIndex);
+		final ImmutablePair<Integer, Integer> indexTuple = getNewerIndexes(firstIndex);
 		updateView(indexTuple);
 
 	}
 
 	public void moveForward() {
-		final int nthPosition = this.thirdItem.getIndex() + 1;
-		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getOlderIndexes(nthPosition);
+		final int nthPosition = this.secondItem.getIndex() + 1;
+		final ImmutablePair<Integer, Integer> indexTuple = getOlderIndexes(nthPosition);
 		updateView(indexTuple);
 	}
 
 	public void moveBackward() {
 		final int nthPosition = this.firstItem.getIndex() - 1;
-		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(nthPosition);
+		final ImmutablePair<Integer, Integer> indexTuple = getNewerIndexes(nthPosition);
 		updateView(indexTuple);
 	}
 
@@ -65,7 +64,7 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 		final int newPosition = size + 1;
 		CatalogItemView newItemView = this.carouselItemBuilder.buildNewCard(newPosition);
 		this.itemMap.put(newPosition, newItemView);
-		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(newPosition);
+		final ImmutablePair<Integer, Integer> indexTuple = getNewerIndexes(newPosition);
 		updateView(indexTuple);
 	}
 
@@ -79,10 +78,9 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 		this.itemMap.remove(index, removeCandidate);
 	}
 
-	public void updateView(final ImmutableTriple<Integer, Integer, Integer> indexTuple) {
+	public void updateView(final ImmutablePair<Integer, Integer> indexTuple) {
 		Integer firstItemIndex = indexTuple.left;
-		Integer secondItemIndex = indexTuple.middle;
-		Integer thirdItemIndex = indexTuple.right;
+		Integer secondItemIndex = indexTuple.right;
 
 		if (firstItem == null) {
 			firstItem = this.itemMap.get(firstItemIndex);
@@ -92,12 +90,6 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 				secondItem = this.itemMap.get(secondItemIndex);
 				if (secondItem != null)
 					addComponentAsFirst(secondItem);
-
-				if (thirdItem == null) {
-					thirdItem = this.itemMap.get(thirdItemIndex);
-					if (thirdItem != null)
-						addComponentAsFirst(thirdItem);
-				}
 			}
 		} else {
 			if (this.itemMap.containsKey(firstItemIndex)) {
@@ -115,50 +107,56 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 							remove(secondItem);
 						secondItem = nplusOnethItem;
 					}
-					if (this.itemMap.containsKey(thirdItemIndex)) {
-						CatalogItemView nplusTwothItem = this.itemMap.get(thirdItemIndex);
-						if (nplusTwothItem != null) {
-							// replace(thirdItem, nplusTwothItem);
-							if (thirdItem != null)
-								remove(thirdItem);
-							thirdItem = nplusTwothItem;
-						}
 					}
 				}
 			}
-			if (thirdItem != null)
-				addComponentAsFirst(thirdItem);
 			if (secondItem != null)
 				addComponentAsFirst(secondItem);
 			if (firstItem != null)
 				addComponentAsFirst(firstItem);
 		}
 
-	}
-
-	public ImmutableTriple<Integer, Integer, Integer> getOlderIndexes(Integer firstItemIndex) {
+	/*public ImmutableTriple<Integer, Integer, Integer> getOlderIndexes(Integer firstItemIndex) {
 		final int secondItemIndex = firstItemIndex + 1;
 		final int thirdItemIndex = secondItemIndex + 1;
 		return new ImmutableTriple<Integer, Integer, Integer>(thirdItemIndex, secondItemIndex, firstItemIndex);
+	}*/
+
+	public ImmutablePair<Integer, Integer> getOlderIndexes(Integer firstItemIndex) {
+		final int secondItemIndex = firstItemIndex + 1;
+		return new ImmutablePair<Integer, Integer>(secondItemIndex, firstItemIndex);
 	}
 
-	public ImmutableTriple<Integer, Integer, Integer> getNewerIndexes(Integer firstItemIndex) {
+	/*public ImmutableTriple<Integer, Integer, Integer> getNewerIndexes(Integer firstItemIndex) {
 		final int secondItemIndex = firstItemIndex - 1;
 		final int thirdItemIndex = secondItemIndex - 1;
 		return new ImmutableTriple<Integer, Integer, Integer>(firstItemIndex, secondItemIndex, thirdItemIndex);
 
+	}*/
+
+	public ImmutablePair<Integer, Integer> getNewerIndexes(Integer firstItemIndex) {
+		final int secondItemIndex = firstItemIndex - 1;
+		return new ImmutablePair<Integer, Integer>(firstItemIndex, secondItemIndex);
+
 	}
 
 	public Integer getLastIndex() {
-		if (this.thirdItem != null) {
-			return this.thirdItem.getIndex();
+		if (this.secondItem != null) {
+			return this.secondItem.getIndex();
 		} else {
 			return this.itemMap.size();
 		}
 	}
 
 	public Integer getFirstIndex() {
+
 		return this.firstItem.getIndex();
+	}
+
+	public void getNavDisable() {
+		if (this.itemMap.size()>1){
+			moveBackward();
+		}
 	}
 
 }

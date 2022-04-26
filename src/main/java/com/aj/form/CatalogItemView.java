@@ -1,23 +1,21 @@
 package com.aj.form;
 
 
-import java.io.InputStream;
-import java.util.Objects;
-
-import org.vaadin.miki.superfields.text.SuperTextArea;
-import org.vaadin.miki.superfields.text.SuperTextField;
-
 import com.aj.LumoConstants;
 import com.aj.StyleUtil;
 import com.aj.reusuables.LayoutUtil;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
+import org.vaadin.miki.superfields.text.SuperTextArea;
+import org.vaadin.miki.superfields.text.SuperTextField;
+
+import java.io.InputStream;
+import java.util.Objects;
 
 
 public class CatalogItemView extends FlexLayout 
@@ -59,8 +57,6 @@ public class CatalogItemView extends FlexLayout
 		StyleUtil.setMarginLeft(catalogHeader, LumoConstants.LUMO_SPACE_S);
 		add(catalogHeader);
 		setAlignSelf(Alignment.CENTER, catalogHeader);
-		
-		
 		
 		catalogContainer.addClassName("curved-border");
 		catalogContainer.setAlignItems(Alignment.CENTER);

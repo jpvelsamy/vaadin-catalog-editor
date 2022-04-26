@@ -51,4 +51,8 @@ public class CurrencyField extends CustomField<Money> {
 		amount.setValue(money.getAmount());
 		currency.setValue(money.getCurrency());
 	}
+
+	public void getResetAmount(){
+		amount.clear();
+	}
 }

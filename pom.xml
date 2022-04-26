@@ -145,7 +145,18 @@
 			<version>5.0.3</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-core</artifactId>
+			<version>1.24.0</version>
+			<scope>compile</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.github.olafj</groupId>
+            <artifactId>video-tag-java</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<defaultGoal>spring-boot:run</defaultGoal>

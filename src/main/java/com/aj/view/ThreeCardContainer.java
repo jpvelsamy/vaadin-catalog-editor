@@ -1,15 +1,14 @@
 package com.aj.view;
 
+import com.aj.form.CatalogueItem;
+import com.aj.form.CuteCatalogItemView;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-
-import com.aj.form.CatalogueItem;
-import com.aj.form.CuteCatalogItemView;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 public class ThreeCardContainer extends HorizontalLayout {
 
@@ -44,7 +43,7 @@ public class ThreeCardContainer extends HorizontalLayout {
 	}
 
 	public void moveBackward() {
-		final int nthPosition = this.firstItem.getIndex() - 1;
+		final int nthPosition = this.firstItem.getIndex()-1;
 		final ImmutableTriple<Integer, Integer, Integer> indexTuple = getNewerIndexes(nthPosition);
 		updateView(indexTuple);
 	}
