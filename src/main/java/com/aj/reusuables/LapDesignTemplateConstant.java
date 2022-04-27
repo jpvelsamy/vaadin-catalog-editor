@@ -11,5 +11,8 @@ public class LapDesignTemplateConstant {
 	public static final String DEFAULT_TEMPLATE_CARD="template";
 	public static final String DEFAULT_TEMPLATE_AMARA_CARD="template-amara";
 	public static final String DEFAULT_TEMPLATE_AMARAFIELDS_CARD="template-amarafields";
+	public static final String DEFAULT_TEMPLATE_SHLOK = "template-shlok";
+	public static final String DEFAULT_TEMPLATE_ASKJUNO_MARKETING = "template-askjuno-marketing";
+	public static final String DEFAULT_TEMPLATE_INTELLISOL_CARD = "template-intellisol";
 	public static final String DEFAULT_TEMPLATE_INTELLISOL_CONTACT_CARD="template-intellisol-contact";
 }

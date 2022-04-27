@@ -39,7 +39,6 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
     private LeadAcquisitionPage lap;
     private String formId;
     Set<LapDesignTemplate> templateCollection;
-    private LapDesignTemplate amaraFields;
 
 
     public ArbitraryCatalogFormEditor(LeadDataService leadDataService) {
@@ -109,15 +108,24 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
         templateSet.add(t1);
 
         LapDesignTemplate t2 = new LapDesignTemplate();
-        t2.setName("Snake ladder");
+        t2.setName("Amara");
         t2.setTemplateType(LapDesignTemplateConstant.DEFAULT_TEMPLATE_AMARA_CARD);
         templateSet.add(t2);
 
-        amaraFields = new LapDesignTemplate();
-        amaraFields.setName("AmaraFields");
-        amaraFields.setTemplateType(LapDesignTemplateConstant.DEFAULT_TEMPLATE_AMARAFIELDS_CARD);
+        LapDesignTemplate t3 = new LapDesignTemplate();
+        t3.setName("AmaraFields");
+        t3.setTemplateType(LapDesignTemplateConstant.DEFAULT_TEMPLATE_AMARAFIELDS_CARD);
+        templateSet.add(t3);
 
-        templateSet.add(amaraFields);
+        LapDesignTemplate t4 = new LapDesignTemplate();
+        t4.setName("Askjuno Marketing");
+        t4.setTemplateType(LapDesignTemplateConstant.DEFAULT_TEMPLATE_ASKJUNO_MARKETING);
+        templateSet.add(t4);
+
+        LapDesignTemplate t5 = new LapDesignTemplate();
+        t5.setName("Intellisol");
+        t5.setTemplateType(LapDesignTemplateConstant.DEFAULT_TEMPLATE_INTELLISOL_CARD);
+        templateSet.add(t5);
 
         return templateSet;
     }
