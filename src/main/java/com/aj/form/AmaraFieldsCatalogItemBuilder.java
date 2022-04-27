@@ -10,8 +10,8 @@ import java.util.Collection;
 public class AmaraFieldsCatalogItemBuilder implements CarouselItemBuilder {
 
 	private final LapDesignTemplate lapDesign;
-
 	public AmaraFieldsCatalogItemBuilder(LapDesignTemplate lapDesign) {
+
 		this.lapDesign = lapDesign;
 	}
 

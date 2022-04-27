@@ -65,17 +65,18 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
     public void init() {
 
         lapDesign.addValueChangeListener(event -> {
+            this.carouselHolder.removeAll();
             LapDesignTemplate template = lapDesign.getValue();
+            this.carouselHolder.getItemMap().clear();
             this.carouselHolder.swapTemplate(template);
             this.carouselHolder.createAllCards();
         });
 
         addCard.addClickListener(event -> {
-
-                Integer position = this.carouselHolder.getLastIndex();
-                CatalogueItem emptyItem = new CatalogueItem();
-                emptyItem.setPosition(position);
-                this.carouselHolder.addNewCard(emptyItem);
+            Integer position = this.carouselHolder.getLastIndex();
+            CatalogueItem emptyItem = new CatalogueItem();
+            emptyItem.setPosition(position);
+            this.carouselHolder.addNewCard(emptyItem);
         });
 
         carouselContainer.add(next);
@@ -129,5 +130,8 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
             this.carouselHolder.loadLap(lap);
         }
         this.init();
+    }
+    public void getAddCardDisable(){
+        this.addCard.setEnabled(false);
     }
 }

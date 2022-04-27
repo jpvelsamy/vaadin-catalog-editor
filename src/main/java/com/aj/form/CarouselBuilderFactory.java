@@ -9,7 +9,7 @@ public class CarouselBuilderFactory {
 	public static CarouselItemBuilder create(LapDesignTemplate template) {
 		if(template.getTemplateType().equals(LapDesignTemplateConstant.DEFAULT_TEMPLATE_AMARAFIELDS_CARD)) {
 			return new AmaraFieldsCatalogItemBuilder(template);
-		}else {
+		}else{
 
 			return new ArbitraryCatalogItemBuilder(template);
 		}

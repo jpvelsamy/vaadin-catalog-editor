@@ -14,7 +14,6 @@ public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 	public ArbitraryCatalogItemBuilder(LapDesignTemplate lapDesign) {
 		this.lapDesign = lapDesign;
 	}
-
 	
 	public CatalogItemView buildBootstrapCard(LeadAcquisitionPage lap) {
 		CatalogueItem firstItem = findFirstItem(lap.getMarketingCard().getCatalogueDetails());
@@ -49,8 +48,7 @@ public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 
 	public Collection<CatalogItemView> buildAllCards(int position) {
 		Collection<CatalogItemView> catalogItemViews = new ArrayList<>();
-			catalogItemViews.add(buildNewCard(position));
+			catalogItemViews.add(buildNewCard(++position));
 		return catalogItemViews;
 	}
-
 }
