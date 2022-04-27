@@ -7,11 +7,11 @@ import com.aj.view.CatalogueItemDesign;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
+public class AmaraFieldsCatalogItemBuilder implements CarouselItemBuilder {
 
 	private final LapDesignTemplate lapDesign;
 
-	public ArbitraryCatalogItemBuilder(LapDesignTemplate lapDesign) {
+	public AmaraFieldsCatalogItemBuilder(LapDesignTemplate lapDesign) {
 		this.lapDesign = lapDesign;
 	}
 
@@ -43,13 +43,16 @@ public class ArbitraryCatalogItemBuilder implements CarouselItemBuilder {
 
 	@Override
 	public CatalogItemView buildNewCard(int position) {
-		
+
 		return new NewCatalogItemView(position);
 	}
 
+	@Override
 	public Collection<CatalogItemView> buildAllCards(int position) {
 		Collection<CatalogItemView> catalogItemViews = new ArrayList<>();
-			catalogItemViews.add(buildNewCard(position));
+		for (int i=1;i<=4;i++){
+			catalogItemViews.add(buildNewCard(++position));
+		}
 		return catalogItemViews;
 	}
 

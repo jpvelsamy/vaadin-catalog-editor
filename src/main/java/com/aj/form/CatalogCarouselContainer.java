@@ -59,6 +59,19 @@ public class CatalogCarouselContainer extends HorizontalLayout {
 		updateView(indexTuple);
 	}
 
+	public void createAllCards() {
+		this.removeAll();
+		this.itemMap.clear();
+		int newPosition = 0;
+		Collection<CatalogItemView> newItemViews = this.carouselItemBuilder.buildAllCards(newPosition);
+		for (CatalogItemView newItemView : newItemViews) {
+			this.itemMap.put(++newPosition, newItemView);
+			final ImmutablePair<Integer, Integer> indexTuple = getNewerIndexes(newPosition);
+			updateView(indexTuple);
+		}
+
+	}
+
 	public void addNewCard(CatalogueItem newItem) {
 		final int size = this.itemMap.size();
 		final int newPosition = size + 1;

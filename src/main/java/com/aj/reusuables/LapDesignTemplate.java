@@ -14,8 +14,8 @@ public class LapDesignTemplate {
 
     private String name;
 
-    private String templateType=LapDesignTemplateConstant.DEFAULT_PRICING_CARD;
-    
+//    private String templateType=LapDesignTemplateConstant.DEFAULT_PRICING_CARD;
+    private String templateType;
     private String mappingUrl;
 
     private String junoBusinessId;

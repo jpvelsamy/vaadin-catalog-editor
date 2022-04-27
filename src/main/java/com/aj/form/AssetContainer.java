@@ -25,6 +25,7 @@ public class AssetContainer extends FlexLayout {
 	private boolean isImageUploaded=true;
 	private Image bgImage;
 	private FlexLayout videoLayout;
+	private Video video;
 	
 	public AssetContainer()
 	{
@@ -37,14 +38,16 @@ public class AssetContainer extends FlexLayout {
 		assetGroup.setItems(assetCollection);
 		assetGroup.addValueChangeListener(event->{
 			String value = event.getValue();
-			if(value.equalsIgnoreCase("image"))
-				this.isImageUploaded=true;
-			else
-				this.isImageUploaded=false;
+			if(value.equalsIgnoreCase("image")) {
+				this.isImageUploaded = true;
+			}
+			else {
+				this.isImageUploaded = false;
+			}
 		});
 //		setAlignSelf(Alignment.CENTER, assetGroup);
 		uploadAssets.setAutoUpload(true);
-		uploadAssets.setAcceptedFileTypes("image/png", "image/jpeg", "image/gif","video/mp4");
+		uploadAssets.setAcceptedFileTypes("image/png", "image/jpeg", "image/gif","video/mp4");uploadAssets.setAcceptedFileTypes("image/png", "image/jpeg", "image/gif","video/mp4");
 		uploadAssets.setUploadButton(new Button("Upload"));		
 		uploadAssets.addSucceededListener(event -> {
 			String fileName = event.getFileName();
@@ -54,17 +57,21 @@ public class AssetContainer extends FlexLayout {
 					() -> inputStream);
 
 			if(isImageUploaded) {
+
 				bgImage.setSrc(resource);
+				videoLayout.removeAll();
 			}
 			else {
+				bgImage.setSrc("");
 				add(getVideoLayout(resource));
+
 			}
 		});
 //		setAlignSelf(Alignment.CENTER, uploadAssets);
 		bgImage = new Image();
 		bgImage.setMaxHeight("350px");
 		bgImage.setMaxWidth("400px");
-		bgImage.setSrc("https://res.cloudinary.com/caseyforjuno/image/upload/v1593691871/no_image.jpg");
+		bgImage.setSrc("https://res.cloudinary.com/caseyforjuno/image/upload/v1650958483/casey/no_image_ogiybp.png");
 		bgImage.getStyle().set("border-radius", "25px");
 		setAlignSelf(Alignment.CENTER, bgImage);
 		add(this.assetGroup);
@@ -75,7 +82,7 @@ public class AssetContainer extends FlexLayout {
 	public FlexLayout getVideoLayout (StreamResource resource) {
 		{
 			videoLayout = LayoutUtil.getFlexVerticalLayout(true);
-			Video video = new BlobSourceVideo();
+			video = new BlobSourceVideo();
 			video.setMaxHeight("350px");
 			video.setMaxWidth("400px");
 			video.setMinHeight("150px");
@@ -101,7 +108,7 @@ public class AssetContainer extends FlexLayout {
 
 	public void getResetUploads(){
 		uploadAssets.clearFileList();
-		bgImage.setSrc("https://res.cloudinary.com/caseyforjuno/image/upload/v1593691871/no_image.jpg");
+		bgImage.setSrc("https://res.cloudinary.com/caseyforjuno/image/upload/v1650958483/casey/no_image_ogiybp.png");
 		videoLayout.removeAll();
 	}
 

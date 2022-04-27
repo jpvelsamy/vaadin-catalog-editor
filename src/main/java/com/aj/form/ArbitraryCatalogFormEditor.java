@@ -11,7 +11,6 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.*;
@@ -41,8 +40,6 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
     private String formId;
     Set<LapDesignTemplate> templateCollection;
     private LapDesignTemplate amaraFields;
-    private int counter = 0;
-	private LapDesignTemplate selectedTemplate;
 
 
     public ArbitraryCatalogFormEditor(LeadDataService leadDataService) {
@@ -55,11 +52,6 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
         lapDesign.setPlaceholder("Select Design");
         lapDesign.setItemLabelGenerator(LapDesignTemplate::getName);
         templateCollection = createLapDesignTemplate();
-		lapDesign.addValueChangeListener(event -> {
-
-			selectedTemplate = event.getValue();
-
-		});
         lapDesign.setItems(templateCollection);
         final LapDesignTemplate defaultTemplate = templateCollection.iterator().next();
         lapDesign.setValue(defaultTemplate);
@@ -72,30 +64,18 @@ public class ArbitraryCatalogFormEditor extends Div implements HasUrlParameter<S
 
     public void init() {
 
-        lapDesign.addCustomValueSetListener(event -> {
+        lapDesign.addValueChangeListener(event -> {
             LapDesignTemplate template = lapDesign.getValue();
             this.carouselHolder.swapTemplate(template);
+            this.carouselHolder.createAllCards();
         });
 
         addCard.addClickListener(event -> {
-            if (selectedTemplate.equals(amaraFields)) {
-                counter += 1;
+
                 Integer position = this.carouselHolder.getLastIndex();
                 CatalogueItem emptyItem = new CatalogueItem();
                 emptyItem.setPosition(position);
                 this.carouselHolder.addNewCard(emptyItem);
-				if (counter >= 4) {
-					addCard.setEnabled(false);
-					Notification notification = Notification.show("Only 4 Section allowed for selected Template");
-					notification.setPosition(Notification.Position.MIDDLE);
-//					notification.addDetachListener(detachEvent -> addCard.setEnabled(true));
-				}
-            } else {
-                Integer position = this.carouselHolder.getLastIndex();
-                CatalogueItem emptyItem = new CatalogueItem();
-                emptyItem.setPosition(position);
-                this.carouselHolder.addNewCard(emptyItem);
-            }
         });
 
         carouselContainer.add(next);
